@@ -1,4 +1,5 @@
 module Main where
+import System.IO (openFile, IOMode (ReadMode), hGetContents)
 
 chunk :: Int -> [a] -> [[a]]
 chunk _ [] = []
@@ -34,6 +35,6 @@ calc'' value (x:xs) =
 
 main :: IO ()
 main = do
-  content <- readFile "/Users/zenobio/Projects/Etc/Haskell/aoc2021/D1/src/input.txt"
-  (print . calc' 0 . lines) content
-  (print . calc'' 0 . map sumOfChunk . chunk 3 . lines) content
+  contents <- readFile "input"
+  (print . calc' 0 . lines) contents
+  (print . calc'' 0 . map sumOfChunk . chunk 3 . lines) contents
